@@ -775,6 +775,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &969247752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1152736463873122, guid: 84d9d532936899c4ea544bbf9569cf7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1478301198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &969247754
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969247752}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a3889c861a3fe4245b461e27dd90493c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1478301198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -791,6 +816,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1375119622716256, guid: 84d9d532936899c4ea544bbf9569cf7c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408702478654622, guid: 84d9d532936899c4ea544bbf9569cf7c, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -909,6 +938,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1318968443633942, guid: a63d10869245be54389339ec34ec6180,
         type: 3}
+    - target: {fileID: 114412339599022640, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: shipAnimator
+      value: 
+      objectReference: {fileID: 969247754}
     - target: {fileID: 114720313097969598, guid: 84d9d532936899c4ea544bbf9569cf7c,
         type: 3}
       propertyPath: highRateOverTime
@@ -928,6 +962,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lowRateOverTime
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114720313097969598, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: rotMod
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
         type: 3}

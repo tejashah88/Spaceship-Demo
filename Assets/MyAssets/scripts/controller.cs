@@ -194,9 +194,8 @@ public class controller : MonoBehaviour {
 
     public bool AnimatorOnStates(params string[] states) {
         foreach (string state in states) {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName(state)) {
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName(state))
                 return true;
-            }
         }
 
         return false;

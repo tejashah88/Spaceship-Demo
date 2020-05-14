@@ -5172,7 +5172,6 @@ GameObject:
   - component: {fileID: 4634275585386254}
   - component: {fileID: 114412339599022640}
   - component: {fileID: 64251999263664696}
-  - component: {fileID: 95104537101892346}
   - component: {fileID: 82164828684067236}
   m_Layer: 0
   m_Name: SmallShip
@@ -5215,7 +5214,7 @@ MonoBehaviour:
   phaserPrefab: {fileID: 1318968443633942, guid: a63d10869245be54389339ec34ec6180,
     type: 3}
   beamPrefab: {fileID: 1479242825851444, guid: 22a3dd7ed983a9b4ebd33c5659cc3870, type: 3}
-  shipAnimator: {fileID: 95104537101892346}
+  shipAnimator: {fileID: 0}
   beamSound: {fileID: 8300000, guid: e32d3923e70bcdb4199b56e78abeaa90, type: 3}
   phaserSound: {fileID: 8300000, guid: 1afa41c7ac2cc1c4f92f878bc38d4a18, type: 3}
   warpSound: {fileID: 8300000, guid: 2b2e24c8dbc5a864188b13e04dab8461, type: 3}
@@ -5254,25 +5253,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300008, guid: 6c11e79470dad4b4bb66b279d2660007, type: 3}
---- !u!95 &95104537101892346
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375119622716256}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3889c861a3fe4245b461e27dd90493c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &82164828684067236
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10168,7 +10148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 589def79016b5ca449e198d1adfb7821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotMod: -30
   lowStartSpeed: 1
   highStartSpeed: 20
   lowRateOverTime: 100
