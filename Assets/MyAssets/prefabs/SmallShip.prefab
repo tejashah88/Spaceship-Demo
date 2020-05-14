@@ -5211,7 +5211,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warping: 0
   warpFx: {fileID: 114720313097969598}
-  speedMod: 5
   shipObject: {fileID: 1152736463873122}
   phaserPrefab: {fileID: 1318968443633942, guid: a63d10869245be54389339ec34ec6180,
     type: 3}
@@ -5225,15 +5224,12 @@ MonoBehaviour:
   phaserSoundSource: {fileID: 0}
   warpSoundSource: {fileID: 0}
   warpReverseSoundSource: {fileID: 0}
-  beamBoltObj: {fileID: 0}
   maxBank: 30
   sf2: {fileID: 0}
   beamTransformParent: {fileID: 4682525785655146}
   leftGun: {fileID: 4399121561376546}
   rightGun: {fileID: 4793814570430210}
   maxPhaserCooldown: 0.15
-  lowSf2Distance: -16
-  highSf2Distance: 3
   normalSpeed: 5
   warpSpeed: 100
   skyboxMaterials:
@@ -5242,7 +5238,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: b13109bc4674dd24ebc04b7c12437ad6, type: 2}
   - {fileID: 2100000, guid: 8401881fcb9afd34eb383fc90bbbbddc, type: 2}
   skyboxBlendIndex: 0
-  inTransitionOfWarping: 0
   timeWaitForBlending: 1
   anim: {fileID: 95541366227476352}
 --- !u!64 &64251999263664696

@@ -9,9 +9,10 @@ public class SmoothFollow2 : MonoBehaviour {
     public bool followBehind = true;
     public float rotationDamping = 10.0f;
     public float rotationLookOffset;
-    public float smoothTime = 0.3f;
 
-    private Vector3 velocity = Vector3.zero;
+    public void setDamping(float newDamping) {
+        damping = newDamping;
+    }
 
     void FixedUpdate() {
         Vector3 wantedPosition;
@@ -20,8 +21,7 @@ public class SmoothFollow2 : MonoBehaviour {
         else
             wantedPosition = target.TransformPoint(0, height, distance);
 
-        // transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
-        transform.position = Vector3.SmoothDamp(transform.position, wantedPosition, ref velocity, smoothTime);
+        transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
 
         if (smoothRotation) {
             Quaternion wantedRotation = Quaternion.LookRotation(

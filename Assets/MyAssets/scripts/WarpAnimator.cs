@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WarpAnimator : MonoBehaviour {
-    public float rotMod;
-
     public float lowStartSpeed;
     public float highStartSpeed;
 
@@ -40,10 +38,6 @@ public class WarpAnimator : MonoBehaviour {
         particles.Play(true);
     }
 
-    void Update() {
-        altParticles.transform.Rotate(0, 0, Time.deltaTime * rotMod);
-    }
-
     public IEnumerator _engage() {
         float initStartSpeedMult = main.startSpeedMultiplier;
         float initRateOverTime = emission.rateOverTimeMultiplier;
@@ -58,7 +52,7 @@ public class WarpAnimator : MonoBehaviour {
             rrenderer.lengthScale = Mathf.Lerp(initLengthScale, highLengthScale, percentage);
             main.startSpeedMultiplier = Mathf.Lerp(initStartSpeedMult, highStartSpeed, percentage);
             emission.rateOverTimeMultiplier = Mathf.Lerp(initRateOverTime, highRateOverTime, percentage);
-            yield return new WaitForSeconds(0.045f);
+            yield return new WaitForSeconds(0.030f);
         }
 
         altParticles.Play(false);
@@ -68,8 +62,6 @@ public class WarpAnimator : MonoBehaviour {
             Camera.main.fieldOfView = Mathf.Lerp(initCameraFov, highCameraFov, percentage);
             yield return null;
         }
-
-        Debug.Log("on");
     }
 
     public IEnumerator _disengage() {
@@ -80,7 +72,6 @@ public class WarpAnimator : MonoBehaviour {
 
         float percentage;
 
-//particles.Play(false);
         altParticles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
 
         for (percentage = 0f; percentage <= 1.1f; percentage += 0.1f) {
@@ -104,10 +95,7 @@ public class WarpAnimator : MonoBehaviour {
         yield return new WaitForSeconds(0.8f);
         main.prewarm = true;
         //main.simulationSpace = ParticleSystemSimulationSpace.World;
-
         //particles.Stop(false, ParticleSystemStopBehavior.StopEmitting);
-
-        Debug.Log("off");
     }
 
     public void Engage() {

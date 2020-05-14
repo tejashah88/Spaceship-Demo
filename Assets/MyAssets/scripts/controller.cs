@@ -6,7 +6,7 @@ using UnityEngine;
 public class controller : MonoBehaviour {
     public bool warping = false;
     public WarpAnimator warpFx;
-    public float speedMod = 5f;
+    private float speedMod = 5f;
     public GameObject shipObject;
     public GameObject phaserPrefab;
     public GameObject beamPrefab;
@@ -23,9 +23,9 @@ public class controller : MonoBehaviour {
     public AudioSource warpSoundSource;
     public AudioSource warpReverseSoundSource;
 
-    public GameObject beamBoltObj = null;
-    public float maxBank = 15.0f;
+    private GameObject beamBoltObj = null;
     private bool isShootingFromRight;
+    public float maxBank = 30.0f;
 
     public SmoothFollow2 sf2;
 
@@ -38,10 +38,7 @@ public class controller : MonoBehaviour {
 
     private bool isPhaserOnCooldown;
     private float currentPhaserCooldown;
-    public float maxPhaserCooldown = 0.25f;
-
-    public float lowSf2Distance;
-    public float highSf2Distance;
+    public float maxPhaserCooldown = 0.15f;
 
     public float normalSpeed;
     public float warpSpeed;
@@ -51,7 +48,7 @@ public class controller : MonoBehaviour {
     public int skyboxBlendIndex = 0;
 
     private bool definitelyNotWarping = true;
-    public bool inTransitionOfWarping = false;
+    private bool inTransitionOfWarping = false;
 
     private Shader blendShader;
 
@@ -134,21 +131,17 @@ public class controller : MonoBehaviour {
                 ControlBeam(false);
 
                 yield return new WaitForSeconds(0.5f);
-
                 yield return warpFx._engage();
-
-                //yield return new WaitForSeconds(1f);
 
                 for (float percentage = 0; percentage <= 1.05f; percentage += 0.05f) {
                     speedMod = Mathf.Lerp(normalSpeed, warpSpeed, percentage);
-                    sf2.distance = Mathf.Lerp(highSf2Distance, lowSf2Distance, percentage);
-                    // yield return new WaitForSeconds(0.01f);
+                    sf2.setDamping(Mathf.Lerp(5, 25, percentage));
+                    yield return new WaitForSeconds(0.001f);
                 }
 
                 StartCoroutine("BlendSkyboxWhileWarping");
 
                 speedMod = warpSpeed;
-                sf2.distance = lowSf2Distance;
             } else {
                 playWarpSoundExit();
 
@@ -158,12 +151,11 @@ public class controller : MonoBehaviour {
                 warpFx.Disengage();
 
                 for (float percentage = 0; percentage <= 1.02f; percentage += 0.02f) {
-                    sf2.distance = Mathf.Lerp(lowSf2Distance, highSf2Distance, percentage);
                     speedMod = Mathf.Lerp(warpSpeed, normalSpeed, percentage);
-                    yield return null;
+                    sf2.setDamping(Mathf.Lerp(25, 5, percentage));
+                    yield return new WaitForSeconds(0.001f);
                 }
 
-                sf2.distance = highSf2Distance;
                 speedMod = normalSpeed;
                 definitelyNotWarping = true;
             }
@@ -210,62 +202,22 @@ public class controller : MonoBehaviour {
         return false;
     }
 
-    private int leftBankState = 0;
-    private int rightBankState = 0;
-
     public Animator anim;
 
-    // Update is called once per frame
-    void Update () {
+    void Update() {
         if (Input.GetKey("escape"))
-        Application.Quit();
+            Application.Quit();
 
-        float movementMod = 50;
-
-        if (beamBoltObj != null) {
-            beamBoltObj.transform.localEulerAngles = shipObject.transform.localEulerAngles / 2;
-        }
-
-        this.transform.Rotate(
-            Vector3.right,
-            definitelyNotWarping ? -Input.GetAxis("Vertical") * movementMod * Time.deltaTime : 0
-        );
-
-        this.transform.Rotate(
-            Vector3.up,
-            definitelyNotWarping ? Input.GetAxis("Horizontal") * movementMod * Time.deltaTime : 0
-        );
-
-        if (AnimatorOnStates("Idle")) {
-            Vector3 localEulers = shipObject.transform.localEulerAngles;
-            localEulers.z = definitelyNotWarping ? -Input.GetAxis("Horizontal") * maxBank : 0;
-            shipObject.transform.localEulerAngles = localEulers;
-        }
-
-        if (Input.GetKeyDown("z")) {
+        if (Input.GetKeyDown("z"))
             StartCoroutine("ToggleWarp");
-        }
-
-        /*if (Input.GetKeyDown("a") && definitelyNotWarping && AnimatorOnStates("Idle")) {
-            anim.Play("Tilt Left");
-            }
-
-            if (Input.GetKeyDown("d") && definitelyNotWarping && AnimatorOnStates("Idle")) {
-            anim.Play("Tilt Right");
-            }
-
-            if (Input.GetKeyUp("a") && definitelyNotWarping && AnimatorOnStates("Hold Left")) {
-            anim.Play("Stabilize Left");
-            }
-
-            if (Input.GetKeyUp("d") && definitelyNotWarping && AnimatorOnStates("Hold Right")) {
-            anim.Play("Stabilize Right");
-            }*/
 
         if (Input.GetKey(KeyCode.Mouse2) && definitelyNotWarping && !AnimatorIsPlaying() && AnimatorOnStates("Idle")) {
-            if (Input.GetKey(KeyCode.A)) anim.Play("Roll Left");
-            else if (Input.GetKey(KeyCode.D)) anim.Play("Roll Right");
-            else if (Input.GetKey(KeyCode.W)) anim.Play("Back Flip");
+            if (Input.GetKey(KeyCode.A))
+                anim.Play("Roll Left");
+            else if (Input.GetKey(KeyCode.D))
+                anim.Play("Roll Right");
+            else if (Input.GetKey(KeyCode.W))
+                anim.Play("Back Flip");
         }
 
         if (Input.GetAxis("Fire1") > 0.9f && !isFiringBeam && definitelyNotWarping) {
@@ -286,9 +238,8 @@ public class controller : MonoBehaviour {
             }
 
             currentPhaserCooldown += Time.deltaTime;
-            if (currentPhaserCooldown >= maxPhaserCooldown) {
+            if (currentPhaserCooldown >= maxPhaserCooldown)
                 isPhaserOnCooldown = false;
-            }
         }
 
         if (Input.GetAxis("Fire2") > 0.9f && definitelyNotWarping && !isFiringBeam) {
@@ -298,7 +249,39 @@ public class controller : MonoBehaviour {
         }
 
         if (Input.GetAxis("Fire2") < 0.05f) {
-            isFiringBeam = true;
+            // stop firing beam
+            isFiringBeam = false;
+            ControlBeam(isFiringBeam);
+        }
+
+        if (Input.GetButtonUp("Fire3")) {
+            if (maxPhaserCooldown > 0.05f)
+                maxPhaserCooldown = 0.05f;
+            else
+                maxPhaserCooldown = 0.15f;
+        }
+    }
+
+    void FixedUpdate() {
+        float movementMod = 50;
+
+        if (beamBoltObj != null)
+            beamBoltObj.transform.localEulerAngles = shipObject.transform.localEulerAngles / 2;
+
+        this.transform.Rotate(
+            Vector3.right,
+            definitelyNotWarping ? -Input.GetAxis("Vertical") * movementMod * Time.deltaTime : 0
+        );
+
+        this.transform.Rotate(
+            Vector3.up,
+            definitelyNotWarping ? Input.GetAxis("Horizontal") * movementMod * Time.deltaTime : 0
+        );
+
+        if (AnimatorOnStates("Idle")) {
+            Vector3 localEulers = shipObject.transform.localEulerAngles;
+            localEulers.z = definitelyNotWarping ? -Input.GetAxis("Horizontal") * maxBank : 0;
+            shipObject.transform.localEulerAngles = localEulers;
         }
 
         this.transform.Translate(Vector3.forward * speedMod * Time.deltaTime);
