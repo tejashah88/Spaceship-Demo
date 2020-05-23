@@ -188,20 +188,18 @@ public class controller : MonoBehaviour {
     }
 
     public bool AnimatorIsPlaying() {
-        AnimatorStateInfo asi = anim.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo asi = shipAnimator.GetCurrentAnimatorStateInfo(0);
         return asi.length * 0.9f > asi.normalizedTime;
     }
 
     public bool AnimatorOnStates(params string[] states) {
         foreach (string state in states) {
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName(state))
+            if (shipAnimator.GetCurrentAnimatorStateInfo(0).IsName(state))
                 return true;
         }
 
         return false;
     }
-
-    public Animator anim;
 
     void Update() {
         if (Input.GetKey("escape"))
@@ -212,11 +210,11 @@ public class controller : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Mouse2) && definitelyNotWarping && !AnimatorIsPlaying() && AnimatorOnStates("Idle")) {
             if (Input.GetKey(KeyCode.A))
-                anim.Play("Roll Left");
+                shipAnimator.Play("Roll Left");
             else if (Input.GetKey(KeyCode.D))
-                anim.Play("Roll Right");
+                shipAnimator.Play("Roll Right");
             else if (Input.GetKey(KeyCode.W))
-                anim.Play("Back Flip");
+                shipAnimator.Play("Back Flip");
         }
 
         if (Input.GetAxis("Fire1") > 0.9f && !isFiringBeam && definitelyNotWarping) {

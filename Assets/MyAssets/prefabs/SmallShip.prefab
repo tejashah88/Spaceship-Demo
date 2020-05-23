@@ -5238,7 +5238,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8401881fcb9afd34eb383fc90bbbbddc, type: 2}
   skyboxBlendIndex: 0
   timeWaitForBlending: 1
-  anim: {fileID: 95541366227476352}
 --- !u!64 &64251999263664696
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10169,7 +10168,6 @@ GameObject:
   - component: {fileID: 4682525785655146}
   - component: {fileID: 33325527333125650}
   - component: {fileID: 23458599718444500}
-  - component: {fileID: 95541366227476352}
   m_Layer: 0
   m_Name: Example_1
   m_TagString: Untagged
@@ -10240,22 +10238,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!95 &95541366227476352
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721493740047662}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a3889c861a3fe4245b461e27dd90493c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

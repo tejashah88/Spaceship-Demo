@@ -978,6 +978,31 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 198192278109444434, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
         type: 3}
       propertyPath: lengthInSec
@@ -987,6 +1012,81 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198671977522171468, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199806473748850132, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_ApplyActiveColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199806473748850132, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199806473748850132, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199939665530308952, guid: 84d9d532936899c4ea544bbf9569cf7c,
+        type: 3}
+      propertyPath: m_SortMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d9d532936899c4ea544bbf9569cf7c, type: 3}
